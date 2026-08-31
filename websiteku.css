@@ -1,0 +1,64 @@
+#bl {
+    width:800px;
+    margin:auto;
+    padding: auto;
+}
+#kepala {
+    width: 800px;
+    height: 200px;
+    background-color: rgb(49, 92, 94);
+    color: rgb(255, 255, 255);
+    text-align: center;
+    line-height: 200px;
+}
+#kepala{
+    font-size: 150px;
+    font-family: 'Times New Roman', Times, serif;
+}
+#menu {
+    margin: auto;
+    padding: auto;
+    text-align: center;
+}
+#badan {
+    margin-top: 5px;
+    width: 788px;
+    height: 288px;
+    background-color: rgb(243, 245, 231);
+    text-align: justify;
+    padding: 5px;
+    border: 2px solid hwb(204 25% 56%);
+}
+#kaki{
+    text-align: center;
+    width: 135%;
+    height: 20px;
+    margin: 5px;
+    background-color: rgb(102, 165, 165);
+    border :2px solid rgb(20, 78, 79);
+}
+#menu {
+    margin-top:5px;
+    padding: auto;
+    text-align: center;
+    height: 43px;
+    background-color: rgb(24, 81, 81);
+}
+#menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+#menu ul li {
+    float: left;
+    width: 200px;
+    text-align: center;
+    line-height: 40px;
+}
+#menu ul li a {
+    color: rgb(238, 248, 251);
+    text-decoration: none;
+}
+#menu ul li:hover{
+    background-color: rgb(16, 95, 95);
+}
