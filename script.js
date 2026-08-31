@@ -1,699 +1,1103 @@
-/* =========================================================
-   HAYA PORTFOLIO JAVASCRIPT
-========================================================= */
 document.addEventListener("DOMContentLoaded", () => {
-    document.body.classList.add("loading");
-    /* =====================================================
-       LOADING 0 - 100
-    ====================================================== */
+
+    setupIntro();
+    createOrnaments();
+    setupDraggableCard();
+    setupJourney();
+    setupWorks();
+    setupAchievements();
+    setupNavigation();
+    setupScrollAnimations();
+
+});
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+function setupIntro() {
+
     const intro =
         document.getElementById("intro");
-    const number =
+
+    const statementScreen =
+        document.getElementById("statement-screen");
+
+    const statementText =
+        document.getElementById("statement-text");
+
+    const website =
+        document.getElementById("website");
+
+    const loadingNumber =
         document.getElementById("loading-number");
-    const bar =
+
+    const loadingBar =
         document.getElementById("loading-bar");
-    const statement1 =
-        document.querySelector(".intro-text-1");
-    const statement2 =
-        document.querySelector(".intro-text-2");
+
+
     let progress = 0;
 
-    const loading =
-        setInterval(() => {
-            progress +=
-                Math.floor(Math.random() * 6) + 1;
-            if (progress >= 100) {
-                progress = 100;
-                clearInterval(loading);
-                setTimeout(() => {
-                    statement1.classList.add("show");
-                }, 400);
-                setTimeout(() => {
-                    statement2.classList.add("show");
-                }, 3000);
-                setTimeout(() => {
-                    intro.classList.add("hide");
-                    document.body.classList.remove("loading");
-                }, 5600);
-            }
-            number.textContent =
-                progress;
-            bar.style.width =
-                progress + "%";
-        }, 60);
-    /* =====================================================
-       MOBILE NAVBAR
-    ====================================================== */
-    const menuButton =
-        document.querySelector(".menu-button");
-    const navMenu =
-        document.querySelector(".nav-menu");
-    menuButton.addEventListener(
-        "click",
-        () => {
-            navMenu.classList.toggle("open");
+
+    document.body.classList.add("locked");
+
+
+    const loading = setInterval(() => {
+
+        progress++;
+
+        loadingNumber.textContent =
+            `${progress}%`;
+
+        loadingBar.style.width =
+            `${progress}%`;
+
+
+        if (progress >= 100) {
+
+            clearInterval(loading);
+
+            intro.style.transition =
+                "opacity .8s ease";
+
+            intro.style.opacity = "0";
+
+
+            setTimeout(() => {
+
+                intro.style.display =
+                    "none";
+
+                showStatement();
+
+            }, 800);
+
         }
-    );
-    document.querySelectorAll(
-        ".nav-menu a"
-    ).forEach(link => {
-        link.addEventListener(
-            "click",
-            () => {
-                navMenu.classList.remove(
-                    "open"
-                );
-            }
-        );
-    });
-    /* =====================================================
-       NAVBAR ACTIVE UNDERLINE
-    ====================================================== */
-    const sections =
-        document.querySelectorAll(
-            "main section[id]"
-        );
-    const navLinks =
-        document.querySelectorAll(
-            ".nav-menu a"
-        );
-    const navObserver =
-        new IntersectionObserver(
-            entries => {
-                entries.forEach(entry => {
-                    if (
-                        entry.isIntersecting
-                    ) {
-                        navLinks.forEach(link => {
-                            link.classList.toggle(
-                                "active",
-                                link.getAttribute(
-                                    "href"
-                                ) ===
-                                "#" +
-                                entry.target.id
-                            );
-                        });
-                    }
-                });
-            },
-            {
-                rootMargin:
-                    "-35% 0px -55% 0px"
-            }
-        );
 
-    sections.forEach(section => {
-        navObserver.observe(section);
-    });
+    }, 25);
 
-    /* ====================================================
-       SCROLL REVEAL
-    ====================================================== */
-    const revealObserver =
-        new IntersectionObserver(
-            entries => {
-                entries.forEach(entry => {
-                    if (
-                        entry.isIntersecting
-                    ) {
-                        entry.target.classList.add(
-                            "show"
+
+    function showStatement() {
+
+        statementScreen.style.display =
+            "flex";
+
+        statementScreen.style.opacity =
+            "0";
+
+
+        setTimeout(() => {
+
+            statementScreen.style.opacity =
+                "1";
+
+        }, 100);
+
+
+        setTimeout(() => {
+
+            statementScreen.style.opacity =
+                "0";
+
+
+            setTimeout(() => {
+
+                statementText.textContent =
+                    "DESIGN. CREATE. DEVELOP.";
+
+                statementScreen.style.opacity =
+                    "1";
+
+
+                setTimeout(() => {
+
+                    statementScreen.style.opacity =
+                        "0";
+
+
+                    setTimeout(() => {
+
+                        statementScreen.style.display =
+                            "none";
+
+                        website.style.visibility =
+                            "visible";
+
+                        website.style.transition =
+                            "opacity 1s ease";
+
+                        website.style.opacity =
+                            "1";
+
+                        document.body.classList.remove(
+                            "locked"
                         );
-                        revealObserver.unobserve(
-                            entry.target
-                        );
-                    }
-                });
-            },
-            {
-                threshold: .12
-            }
-        );
-    document
-        .querySelectorAll(
-            ".hero-card, .about-card, .works-container, .achievement-card, .contact-card"
-        )
-        .forEach(element => {
-            revealObserver.observe(element);
-        });
 
-    /* =====================================================
-       DRAG NAME TAG
-    ====================================================== */
+                    }, 800);
 
-    const tag =
-        document.getElementById(
-            "nameTag"
-        );
-    let dragging = false;
-    let startX = 0;
-    let startY = 0;
-    let originalX = 0;
-    let originalY = 0;
-    tag.addEventListener(
-        "pointerdown",
-        event => {
-            dragging = true;
-            tag.classList.add(
-                "dragging"
-            );
-            tag.setPointerCapture(
-                event.pointerId
-            );
-            startX =
-                event.clientX;
-            startY =
-                event.clientY;
-            originalX =
-                tag.offsetLeft;
-            originalY =
-                tag.offsetTop;
-        }
-    );
-    tag.addEventListener(
-        "pointermove",
-        event => {
-            if (!dragging)
-                return;
-            const moveX =
-                event.clientX -
-                startX;
-            const moveY =
-                event.clientY -
-                startY;
-            tag.style.left =
-                originalX +
-                moveX +
-                "px";
-            tag.style.top =
-                originalY +
-                moveY +
-                "px";
-        }
-    );
-    function stopDragging() {
-        dragging = false;
-        tag.classList.remove(
-            "dragging"
-        );
+                }, 1800);
+
+            }, 800);
+
+        }, 1800);
+
     }
-    tag.addEventListener(
-        "pointerup",
-        stopDragging
-    );
-    tag.addEventListener(
-        "pointercancel",
-        stopDragging
-    );
-    /* =====================================================
-       JOURNEY SLIDER
-    ====================================================== */
-    const journeys = [
-        {
-            category: "OSIS",
-            title:
-                "Belajar berorganisasi dan bekerja dalam tim.",
 
-            description:
-                "Pengalaman mengikuti organisasi membantu saya belajar komunikasi, tanggung jawab, teamwork, dan keberanian mengambil peran.",
+}
 
-            image:
-                "assets/journey-1.jpg"
-        },
 
-        {
-            category: "PIK-R",
-            title:
-                "Belajar memimpin dan mengelola program.",
+/* =========================================================
+   FLOATING ORNAMENTS
+========================================================= */
 
-            description:
-                "Kegiatan organisasi membuat saya belajar menyusun program, berkoordinasi dengan anggota, dan mengambil keputusan.",
+function createOrnaments() {
 
-            image:
-                "assets/journey-2.jpg"
-        },
+    const container =
+        document.getElementById(
+            "floating-decoration"
+        );
 
-        {
-            category: "PPLG",
-            title:
-                "Menggabungkan desain dengan teknologi.",
-            description:
-                "Saya mulai menggabungkan ketertarikan pada desain dengan kemampuan membuat website menggunakan teknologi web.",
-            image:
-                "assets/journey-3.jpg"
-        }
+
+    const types = [
+        "circle",
+        "square",
+        "star"
     ];
 
-    let journeyIndex = 0;
-    const journeyImage =
-        document.getElementById(
-            "journey-image"
+
+    const colors = [
+        "#f7c8d3",
+        "#a8b58a",
+        "#b46a72",
+        "#a9b7c6"
+    ];
+
+
+    for (let i = 0; i < 32; i++) {
+
+        const ornament =
+            document.createElement("span");
+
+
+        const type =
+            types[
+                Math.floor(
+                    Math.random() * types.length
+                )
+            ];
+
+
+        ornament.className =
+            `ornament ${type}`;
+
+
+        if (type === "star") {
+
+            ornament.textContent =
+                "✦";
+
+        }
+
+
+        ornament.style.left =
+            `${Math.random() * 100}%`;
+
+        ornament.style.top =
+            `${Math.random() * 100}%`;
+
+
+        const color =
+            colors[
+                Math.floor(
+                    Math.random() * colors.length
+                )
+            ];
+
+
+        ornament.style.color =
+            color;
+
+
+        if (type !== "star") {
+
+            ornament.style.background =
+                color;
+
+        }
+
+
+        ornament.style.setProperty(
+            "--duration",
+            `${7 + Math.random() * 8}s`
         );
-    const journeyCategory =
-        document.getElementById(
-            "journey-category"
+
+
+        ornament.style.setProperty(
+            "--delay",
+            `${Math.random() * -10}s`
         );
-    const journeyTitle =
+
+
+        ornament.style.transform =
+            `scale(${0.6 + Math.random() * 0.8})`;
+
+
+        container.appendChild(
+            ornament
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   DRAGGABLE POLAROID
+========================================================= */
+
+function setupDraggableCard() {
+
+    const card =
+        document.getElementById("id-card");
+
+    const wrap =
+        document.querySelector(".id-card-wrap");
+
+
+    if (!card || !wrap) {
+        return;
+    }
+
+
+    let isDragging = false;
+
+    let startX = 0;
+    let startY = 0;
+
+    let currentX = 0;
+    let currentY = 0;
+
+
+    function startDrag(event) {
+
+        isDragging = true;
+
+
+        const point =
+            event.touches
+                ? event.touches[0]
+                : event;
+
+
+        startX =
+            point.clientX - currentX;
+
+        startY =
+            point.clientY - currentY;
+
+
+        card.style.transition =
+            "none";
+
+    }
+
+
+    function drag(event) {
+
+        if (!isDragging) {
+            return;
+        }
+
+
+        const point =
+            event.touches
+                ? event.touches[0]
+                : event;
+
+
+        currentX =
+            point.clientX - startX;
+
+        currentY =
+            point.clientY - startY;
+
+
+        currentX =
+            Math.max(
+                -100,
+                Math.min(100, currentX)
+            );
+
+
+        currentY =
+            Math.max(
+                -80,
+                Math.min(80, currentY)
+            );
+
+
+        const rotation =
+            currentX * -0.035 - 6;
+
+
+        wrap.style.transform =
+            `translate(${currentX}px, ${currentY}px) rotate(${rotation}deg)`;
+
+    }
+
+
+    function endDrag() {
+
+        if (!isDragging) {
+            return;
+        }
+
+
+        isDragging = false;
+
+
+        wrap.style.transition =
+            "transform .8s cubic-bezier(.2,.8,.2,1)";
+
+
+        wrap.style.transform =
+            "translate(0, 0) rotate(-6deg)";
+
+
+        currentX = 0;
+        currentY = 0;
+
+
+        setTimeout(() => {
+
+            wrap.style.transition =
+                "";
+
+        }, 800);
+
+    }
+
+
+    card.addEventListener(
+        "mousedown",
+        startDrag
+    );
+
+    window.addEventListener(
+        "mousemove",
+        drag
+    );
+
+    window.addEventListener(
+        "mouseup",
+        endDrag
+    );
+
+
+    card.addEventListener(
+        "touchstart",
+        startDrag,
+        { passive: true }
+    );
+
+    window.addEventListener(
+        "touchmove",
+        drag,
+        { passive: true }
+    );
+
+    window.addEventListener(
+        "touchend",
+        endDrag
+    );
+
+}
+
+
+/* =========================================================
+   JOURNEY
+========================================================= */
+
+function setupJourney() {
+
+    const image =
+        document.getElementById(
+            "journey-img"
+        );
+
+    const title =
         document.getElementById(
             "journey-title"
         );
-    const journeyDescription =
+
+    const text =
         document.getElementById(
-            "journey-description"
+            "journey-text"
         );
-    const journeyCounter =
+
+    const number =
         document.getElementById(
-            "journey-counter"
+            "journey-number"
         );
-    document
-        .getElementById(
+
+    const button =
+        document.getElementById(
             "journey-next"
-        )
-        .addEventListener(
-            "click",
-            () => {
-                journeyIndex++;
-                if (
-                    journeyIndex >=
-                    journeys.length
-                ) {
-                    journeyIndex = 0;
-                }
-                const data =
-                    journeys[journeyIndex];
-                journeyImage.style.opacity =
-                    "0";
-                journeyImage.style.transform =
-                    "translateX(15px)";
-                setTimeout(() => {
-                    journeyImage.src =
-                        data.image;
-                    journeyCategory.textContent =
-                        data.category;
-                    journeyTitle.textContent =
-                        data.title;
-                    journeyDescription.textContent =
-                        data.description;
-                    journeyCounter.textContent =
-                        "0" +
-                        (journeyIndex + 1) +
-                        " / 03";
-                    journeyImage.style.opacity =
-                        "1";
-                    journeyImage.style.transform =
-                        "translateX(0)";
-                }, 200);
-            }
         );
-    /* =====================================================
-       SELECTED WORKS
-    ====================================================== */
-    const works = [
-        {
-            category:
-                "GRAPHIC DESIGN",
-            title:
-                "Visual Project",
-            description:
-                "Eksplorasi visual, warna, tipografi, dan komposisi.",
-            image:
-                "assets/work-1.jpg"
-        },
-        {
-            category:
-                "UI/UX DESIGN",
-            title:
-                "Interface Concept",
-            description:
-                "Membuat interface yang sederhana, jelas, dan tetap memiliki karakter.",
-            image:
-                "assets/work-2.jpg"
-        },
 
 
+    if (!image || !button) {
+        return;
+    }
+
+
+    const journeys = [
+
         {
-            category:
-                "WEB DEVELOPMENT",
-            title:
-                "Interactive Website",
-            description:
-                "Mengubah desain menjadi website interaktif menggunakan HTML, CSS, dan JavaScript.",
-            image:
-                "assets/work-3.jpg"
+            image: "assets/journey-1.jpg",
+
+            title: "OSIS",
+
+            text:
+                "Pengalaman mengikuti Organisasi Siswa Intra Sekolah membuat saya belajar menjalankan program kerja, bertanggung jawab terhadap tugas, berkomunikasi dengan banyak orang, public speaking, disiplin, dan bekerja dalam sebuah tim."
+        },
+
+        {
+            image: "assets/journey-2.jpg",
+
+            title: "DESIGN",
+
+            text:
+                "Saya mulai mengeksplorasi dunia desain melalui berbagai project sekolah dan personal. Dari proses ini saya belajar bagaimana sebuah ide dapat diterjemahkan menjadi visual yang memiliki konsep, struktur, dan karakter."
+        },
+
+        {
+            image: "assets/journey-3.jpg",
+
+            title: "DEVELOPMENT",
+
+            text:
+                "Ketertarikan terhadap teknologi membawa saya mempelajari HTML, CSS, JavaScript, PHP, dan pengembangan website. Saya menikmati proses mengubah desain menjadi halaman website yang dapat digunakan."
         }
+
     ];
-    let workIndex = 0;
+
+
+    let index = 0;
+
+
+    function updateJourney(
+        newIndex
+    ) {
+
+        index =
+            (newIndex + journeys.length)
+            % journeys.length;
+
+
+        image.style.opacity =
+            "0";
+
+
+        setTimeout(() => {
+
+            image.src =
+                journeys[index].image;
+
+            title.textContent =
+                journeys[index].title;
+
+            text.textContent =
+                journeys[index].text;
+
+            number.textContent =
+                `0${index + 1} / 0${journeys.length}`;
+
+
+            image.style.opacity =
+                "1";
+
+        }, 250);
+
+    }
+
+
+    button.addEventListener(
+        "click",
+        () => {
+
+            updateJourney(
+                index + 1
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   WORKS
+========================================================= */
+
+function setupWorks() {
+
+    const phoneImage =
+        document.getElementById(
+            "phone-img"
+        );
+
     const workImage =
         document.getElementById(
             "work-image"
         );
-    const workCategory =
-        document.getElementById(
-            "work-category"
-        );
+
     const workTitle =
         document.getElementById(
             "work-title"
         );
+
     const workDescription =
         document.getElementById(
             "work-description"
         );
-    const workTabs =
+
+    const workNumber =
+        document.getElementById(
+            "work-number"
+        );
+
+    const tabs =
         document.querySelectorAll(
             ".work-tab"
         );
-    const dots =
+
+    const prev =
         document.getElementById(
-            "work-dots"
+            "work-prev"
         );
-    /* CREATE DOT */
 
-    works.forEach(
-        (_, index) => {
-            const dot =
-                document.createElement(
-                    "span"
-                );
-            dot.classList.add(
-                "work-dot"
-            );
-            if (index === 0) {
-                dot.classList.add(
-                    "active"
-                );
-            }
-            dots.appendChild(dot);
+    const next =
+        document.getElementById(
+            "work-next"
+        );
+
+
+    if (!workImage) {
+        return;
+    }
+
+
+    const works = [
+
+        {
+            image:
+                "assets/work-poster.jpg",
+
+            title:
+                "POSTER DESIGN",
+
+            description:
+                "Eksplorasi desain visual dengan pendekatan sederhana, modern, dan komunikatif. Fokus pada komposisi, tipografi, warna, dan penyampaian pesan."
+        },
+
+        {
+            image:
+                "assets/work-website.jpg",
+
+            title:
+                "WEB DESIGN",
+
+            description:
+                "Perancangan website dengan fokus pada visual, struktur informasi, konsistensi layout, dan pengalaman pengguna agar sebuah website terasa lebih hidup."
+        },
+
+        {
+            image:
+                "assets/work-ui.jpg",
+
+            title:
+                "UI/UX DEVELOPMENT",
+
+            description:
+                "Menggabungkan desain antarmuka dengan pengembangan website menggunakan HTML, CSS, dan JavaScript untuk menciptakan tampilan yang menarik sekaligus interaktif."
         }
-    );
+
+    ];
 
 
-    function updateWork(index) {
-        workIndex =
-            (index + works.length) %
-            works.length;
-        const data =
-            works[workIndex];
+    let index = 0;
+
+
+    function updateWork(
+        newIndex
+    ) {
+
+        index =
+            (newIndex + works.length)
+            % works.length;
+
+
         workImage.style.opacity =
             "0";
-        workImage.style.transform =
-            "scale(.96)";
+
+        if (phoneImage) {
+
+            phoneImage.style.opacity =
+                "0";
+
+        }
+
+
         setTimeout(() => {
+
             workImage.src =
-                data.image;
-            workCategory.textContent =
-                data.category;
+                works[index].image;
+
+            if (phoneImage) {
+
+                phoneImage.src =
+                    works[index].image;
+
+            }
+
+
             workTitle.textContent =
-                data.title;
+                works[index].title;
+
             workDescription.textContent =
-                data.description;
-            workTabs.forEach(
-                (tab, i) => {
+                works[index].description;
+
+
+            workNumber.textContent =
+                `0${index + 1} / 0${works.length}`;
+
+
+            tabs.forEach(
+                (tab, tabIndex) => {
+
                     tab.classList.toggle(
                         "active",
-                        i === workIndex
+                        tabIndex === index
                     );
+
                 }
             );
-            document
-                .querySelectorAll(
-                    ".work-dot"
-                )
-                .forEach(
-                    (dot, i) => {
-                        dot.classList.toggle(
-                            "active",
-                            i === workIndex
-                        );
-                    }
-                );
+
+
             workImage.style.opacity =
                 "1";
-            workImage.style.transform =
-                "scale(1)";
-        }, 200);
+
+            if (phoneImage) {
+
+                phoneImage.style.opacity =
+                    "1";
+
+            }
+
+        }, 220);
+
     }
-    workTabs.forEach(
-        (tab, index) => {
+
+
+    tabs.forEach(
+        (tab, tabIndex) => {
+
             tab.addEventListener(
                 "click",
                 () => {
-                    updateWork(index);
+
+                    updateWork(
+                        tabIndex
+                    );
+
                 }
             );
+
         }
     );
 
-    document
-        .getElementById(
-            "work-prev"
-        )
-        .addEventListener(
-            "click",
-            () => {
-                updateWork(
-                    workIndex - 1
-                );
-            }
+
+    prev.addEventListener(
+        "click",
+        () => {
+
+            updateWork(
+                index - 1
+            );
+
+        }
+    );
+
+
+    next.addEventListener(
+        "click",
+        () => {
+
+            updateWork(
+                index + 1
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   ACHIEVEMENTS
+========================================================= */
+
+function setupAchievements() {
+
+    const image =
+        document.getElementById(
+            "achievement-img"
         );
 
-    document
-        .getElementById(
-            "work-next"
-        )
-        .addEventListener(
-            "click",
-            () => {
-                updateWork(
-                    workIndex + 1
-                );
-            }
+    const overlayTitle =
+        document.getElementById(
+            "achievement-overlay-title"
         );
-    /* =====================================================
-       ACHIEVEMENTS
-    ====================================================== */
+
+    const overlayText =
+        document.getElementById(
+            "achievement-overlay-text"
+        );
+
+    const message =
+        document.getElementById(
+            "achievement-message"
+        );
+
+    const number =
+        document.getElementById(
+            "achievement-number"
+        );
+
+    const prev =
+        document.getElementById(
+            "achievement-prev"
+        );
+
+    const next =
+        document.getElementById(
+            "achievement-next"
+        );
+
+    const changeButton =
+        document.getElementById(
+            "achievement-change"
+        );
+
+
+    if (!image) {
+        return;
+    }
+
+
     const achievements = [
+
         {
             image:
                 "assets/achievement-1.jpg",
-            label:
-                "SELECTED MOMENT.",
-            description:
-                "Pengalaman mengikuti kegiatan dan kompetisi mengajarkan saya tentang teamwork, konsistensi, dan keberanian untuk berkembang.",
-            quote:
-                "Mulai sekarang, make it happen."
+
+            title:
+                "GROWING THROUGH EXPERIENCE",
+
+            overlay:
+                "Pengalaman mengikuti kegiatan dan bekerja bersama tim mengajarkan saya arti komunikasi, tanggung jawab, kerja sama, dan bagaimana menyelesaikan sebuah tugas bersama.",
+
+            message:
+                "\"Setiap pengalaman adalah bagian dari proses untuk menjadi lebih baik.\""
         },
 
         {
             image:
                 "assets/achievement-2.jpg",
-            label:
-                "TEAMWORK.",
-            description:
-                "Bekerja bersama orang lain mengajarkan saya bahwa hasil yang baik lahir dari komunikasi dan saling mendukung.",
-            quote:
-                "Grow together, go further."
+
+            title:
+                "BRAVE TO CREATE",
+
+            overlay:
+                "Berani mencoba sesuatu yang baru membuat saya menemukan kemampuan yang sebelumnya belum saya sadari. Proses mencoba juga mengajarkan saya untuk tidak takut melakukan kesalahan.",
+
+            message:
+                "\"Jangan takut memulai. Tidak harus sempurna untuk menjadi berarti.\""
         },
 
         {
             image:
                 "assets/achievement-3.jpg",
-            label:
-                "KEEP CREATING.",
-            description:
-                "Setiap project menjadi kesempatan untuk mencoba sesuatu yang baru dan terus berkembang.",
-            quote:
-                "Create. Learn. Repeat."
+
+            title:
+                "KEEP MOVING FORWARD",
+
+            overlay:
+                "Sebuah pencapaian bukan hanya tentang hasil, tetapi juga proses panjang di baliknya. Setiap langkah kecil membantu saya tumbuh dan mengenal kemampuan diri sendiri.",
+
+            message:
+                "\"Keep creating. Keep learning. Keep growing.\""
         }
 
     ];
 
-    let achievementIndex = 0;
-    const achievementImage =
-        document.getElementById(
-            "achievement-image"
-        );
-    const achievementLabel =
-        document.getElementById(
-            "achievement-label"
-        );
-    const achievementDescription =
-        document.getElementById(
-            "achievement-description"
-        );
-    const achievementQuote =
-        document.getElementById(
-            "achievement-quote"
-        );
-    document
-        .getElementById(
-            "achievement-next"
-        )
-        .addEventListener(
-            "click",
-            () => {
-                achievementIndex++;
-                if (
-                    achievementIndex >=
-                    achievements.length
-                ) {
-                    achievementIndex = 0;
-                }
-                const data =
-                    achievements[
-                        achievementIndex
-                    ];
-                achievementImage.style.opacity =
-                    "0";
-                setTimeout(() => {
-                    achievementImage.src =
-                        data.image;
-                    achievementLabel.textContent =
-                        data.label;
-                    achievementDescription.textContent =
-                        data.description;
-                    achievementQuote.textContent =
-                        data.quote;
-                    achievementImage.style.opacity =
-                        "1";
-                }, 200);
-            }
-        );
-    /* =====================================================
-       MOUSE PARALLAX ORNAMENT
-    ====================================================== */
-    window.addEventListener(
-        "pointermove",
-        event => {
-            const x =
-                (
-                    event.clientX /
-                    window.innerWidth -
-                    .5
-                ) * 2;
-            const y =
-                (
-                    event.clientY /
-                    window.innerHeight -
-                    .5
-                ) * 2;
-            document
-                .querySelectorAll(
-                    ".floating-elements span"
-                )
-                .forEach(
-                    (element, index) => {
-                        const depth =
-                            (index + 1) * 2;
-                        element.style.marginLeft =
-                            x * depth +
-                            "px";
-                        element.style.marginTop =
-                            y * depth +
-                            "px";
 
-                    }
-                );
+    let index = 0;
+
+
+    function updateAchievement(
+        newIndex
+    ) {
+
+        index =
+            (newIndex + achievements.length)
+            % achievements.length;
+
+
+        image.style.opacity =
+            "0";
+
+
+        setTimeout(() => {
+
+            image.src =
+                achievements[index].image;
+
+            overlayTitle.textContent =
+                achievements[index].title;
+
+            overlayText.textContent =
+                achievements[index].overlay;
+
+            message.textContent =
+                achievements[index].message;
+
+
+            number.textContent =
+                `0${index + 1} / 0${achievements.length}`;
+
+
+            image.style.opacity =
+                "1";
+
+        }, 250);
+
+    }
+
+
+    /* panah kiri */
+
+    prev.addEventListener(
+        "click",
+        () => {
+
+            updateAchievement(
+                index - 1
+            );
 
         }
     );
 
-});
 
-/* =========================================
-   FLOATING ORNAMENT
-========================================= */
+    /* panah kanan */
 
-const decorationContainer =
-    document.querySelector(".floating-decoration");
+    next.addEventListener(
+        "click",
+        () => {
 
+            updateAchievement(
+                index + 1
+            );
 
-const ornamentSymbols = [
-    "✦",
-    "✧",
-    "•",
-    "✦",
-    "✧",
-    "•"
-];
-
-
-const ornamentColors = [
-    "#F7C8D3", // Blush Petal
-    "#B46A72", // Rosewood
-    "#A8B58A", // Sage Leaf
-    "#A9B7C6"  // Misty Sky
-];
-
-
-function createOrnament() {
-
-    const ornament =
-        document.createElement("span");
-
-
-    ornament.classList.add("js-ornament");
-
-
-    /* Random bentuk */
-    ornament.innerHTML =
-        ornamentSymbols[
-            Math.floor(
-                Math.random() *
-                ornamentSymbols.length
-            )
-        ];
-
-
-    /* Random posisi */
-    ornament.style.left =
-        Math.random() * 100 + "vw";
-
-    ornament.style.top =
-        Math.random() * 100 + "vh";
-
-
-    /* Random ukuran */
-    const size =
-        Math.random() * 14 + 8;
-
-    ornament.style.fontSize =
-        size + "px";
-
-
-    /* Random warna */
-    ornament.style.color =
-        ornamentColors[
-            Math.floor(
-                Math.random() *
-                ornamentColors.length
-            )
-        ];
-
-
-    /* Random durasi */
-    const duration =
-        Math.random() * 8 + 8;
-
-    ornament.style.animationDuration =
-        duration + "s";
-
-
-    /* Random delay */
-    ornament.style.animationDelay =
-        Math.random() * -10 + "s";
-
-
-    decorationContainer.appendChild(
-        ornament
+        }
     );
+
+
+    /* =====================================================
+       PANAH HIJAU CTA
+
+       INI YANG KAMU MAKSUD:
+       ketika diklik, FOTO + TEKS achievement
+       berubah.
+    ====================================================== */
+
+    changeButton.addEventListener(
+        "click",
+        () => {
+
+            updateAchievement(
+                index + 1
+            );
+
+        }
+    );
+
 }
 
 
-/* Buat 25 ornamen */
-for (let i = 0; i < 25; i++) {
+/* =========================================================
+   NAVIGATION
+========================================================= */
 
-    createOrnament();
+function setupNavigation() {
+
+    const links =
+        document.querySelectorAll(
+            ".nav-link"
+        );
+
+    const sections =
+        document.querySelectorAll(
+            ".section"
+        );
+
+
+    links.forEach(
+        link => {
+
+            link.addEventListener(
+                "click",
+                event => {
+
+                    event.preventDefault();
+
+
+                    const target =
+                        document.querySelector(
+                            link.getAttribute("href")
+                        );
+
+
+                    if (target) {
+
+                        target.scrollIntoView({
+                            behavior: "smooth",
+                            block: "start"
+                        });
+
+                    }
+
+                }
+            );
+
+        }
+    );
+
+
+    const observer =
+        new IntersectionObserver(
+            entries => {
+
+                entries.forEach(
+                    entry => {
+
+                        if (
+                            entry.isIntersecting
+                        ) {
+
+                            links.forEach(
+                                link => {
+
+                                    link.classList.remove(
+                                        "active"
+                                    );
+
+                                }
+                            );
+
+
+                            const active =
+                                document.querySelector(
+                                    `.nav-link[href="#${entry.target.id}"]`
+                                );
+
+
+                            if (active) {
+
+                                active.classList.add(
+                                    "active"
+                                );
+
+                            }
+
+                        }
+
+                    }
+                );
+
+            },
+            {
+                threshold: 0.3
+            }
+        );
+
+
+    sections.forEach(
+        section => {
+
+            observer.observe(
+                section
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   SCROLL ANIMATIONS
+========================================================= */
+
+function setupScrollAnimations() {
+
+    const elements =
+        document.querySelectorAll(
+            ".about-card, .work-preview, .achievement-content, .contact-card"
+        );
+
+
+    const observer =
+        new IntersectionObserver(
+            entries => {
+
+                entries.forEach(
+                    entry => {
+
+                        if (
+                            entry.isIntersecting
+                        ) {
+
+                            entry.target.classList.add(
+                                "show"
+                            );
+
+                        }
+
+                    }
+                );
+
+            },
+            {
+                threshold: 0.12
+            }
+        );
+
+
+    elements.forEach(
+        element => {
+
+            element.classList.add(
+                "scroll-hidden"
+            );
+
+            observer.observe(
+                element
+            );
+
+        }
+    );
 
 }
