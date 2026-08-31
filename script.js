@@ -592,6 +592,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         element.style.marginTop =
                             y * depth +
                             "px";
+
                     }
                 );
 
@@ -599,3 +600,100 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 });
+
+/* =========================================
+   FLOATING ORNAMENT
+========================================= */
+
+const decorationContainer =
+    document.querySelector(".floating-decoration");
+
+
+const ornamentSymbols = [
+    "✦",
+    "✧",
+    "•",
+    "✦",
+    "✧",
+    "•"
+];
+
+
+const ornamentColors = [
+    "#F7C8D3", // Blush Petal
+    "#B46A72", // Rosewood
+    "#A8B58A", // Sage Leaf
+    "#A9B7C6"  // Misty Sky
+];
+
+
+function createOrnament() {
+
+    const ornament =
+        document.createElement("span");
+
+
+    ornament.classList.add("js-ornament");
+
+
+    /* Random bentuk */
+    ornament.innerHTML =
+        ornamentSymbols[
+            Math.floor(
+                Math.random() *
+                ornamentSymbols.length
+            )
+        ];
+
+
+    /* Random posisi */
+    ornament.style.left =
+        Math.random() * 100 + "vw";
+
+    ornament.style.top =
+        Math.random() * 100 + "vh";
+
+
+    /* Random ukuran */
+    const size =
+        Math.random() * 14 + 8;
+
+    ornament.style.fontSize =
+        size + "px";
+
+
+    /* Random warna */
+    ornament.style.color =
+        ornamentColors[
+            Math.floor(
+                Math.random() *
+                ornamentColors.length
+            )
+        ];
+
+
+    /* Random durasi */
+    const duration =
+        Math.random() * 8 + 8;
+
+    ornament.style.animationDuration =
+        duration + "s";
+
+
+    /* Random delay */
+    ornament.style.animationDelay =
+        Math.random() * -10 + "s";
+
+
+    decorationContainer.appendChild(
+        ornament
+    );
+}
+
+
+/* Buat 25 ornamen */
+for (let i = 0; i < 25; i++) {
+
+    createOrnament();
+
+}
