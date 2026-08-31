@@ -738,19 +738,12 @@ button {
 /* about image */
 
 .about-photo {
-    position: absolute;
-
-    right: 25px;
-    top: -120px;
-
-    width: 350px;
-
+     position: absolute;
+    right: -25px;
+    top: -160px;
+    width: 520px;
     z-index: 3;
-
-    animation:
-        photoFloat
-        4s ease-in-out
-        infinite;
+    animation: photoFloat 4s ease-in-out infinite;
 }
 
 .about-photo img {
