@@ -673,19 +673,14 @@ button {
 .about {
     position: relative;
     width: 100%;
-
     overflow: hidden;
-
     padding: 95px 0 100px;
 }
 
 .section-running-title {
     width: max-content;
-
     margin-bottom: 55px;
-
     white-space: nowrap;
-
     animation:
         aboutMove
         20s linear
@@ -694,14 +689,10 @@ button {
 
 .section-running-title span {
     color: transparent;
-
     -webkit-text-stroke:
         2px var(--sky);
-
     font-size: clamp(70px, 9vw, 145px);
-
     line-height: 0.9;
-
     font-weight: 800;
 }
 
@@ -714,29 +705,19 @@ button {
         transform: translateX(0);
     }
 }
-
-
 /* main white card */
-
 .about-card {
     position: relative;
     width: var(--main-width);
     max-width: var(--main-max-width);
-
     min-height: 730px;
     margin: 0 auto;
-
     padding: 80px 10% 80px 8%;
-
     border-radius: 45px;
     background: var(--cream);
-
     z-index: 2;
 }
-
-
 /* about image */
-
 .about-photo {
      position: absolute;
     right: -25px;
@@ -748,11 +729,8 @@ button {
 
 .about-photo img {
     position: relative;
-
     width: 100%;
-
     display: block;
-
     filter:
         drop-shadow(
             0 15px 18px
@@ -762,13 +740,9 @@ button {
 
 .photo-glow {
     position: absolute;
-
     inset: 15% 5% 5%;
-
     background: var(--sage);
-
     filter: blur(35px);
-
     opacity: 0.45;
 }
 
@@ -787,9 +761,7 @@ button {
     }
 }
 
-
 /* about text */
-
 .about-text {
     width: 65%;
     color: #6d7b45;
@@ -797,13 +769,9 @@ button {
 
 .about-text h2 {
     margin: 9px 0 20px;
-
     color: var(--sage);
-
     font-size: clamp(38px, 4vw, 55px);
-
     line-height: 1;
-
     letter-spacing: -0.04em;
 }
 
@@ -813,16 +781,9 @@ button {
 
 .about-text > p {
     margin-bottom: 17px;
-
     font-size: 16px;
-
     line-height: 1.75;
 }
-
-
-/* =========================================================
-   SKILLS
-========================================================= */
 
 .skills-block,
 .journey-block {
@@ -831,86 +792,61 @@ button {
 
 .block-title {
     display: inline-flex;
-
     padding: 10px 25px;
-
     border-radius:
         18px
         32px
         32px
         18px;
-
     color: white;
-
     background:
         linear-gradient(
             90deg,
             var(--rose),
             var(--sage)
         );
-
     font-size: 12px;
-
     font-weight: 800;
-
     letter-spacing: 0.08em;
 }
 
 .block-description {
     max-width: 630px;
-
     margin:
         12px 0
         18px;
 
     color: #79855a;
-
     font-size: 12px;
-
     line-height: 1.6;
 }
 
 .skills {
     display: flex;
-
     gap: 23px;
-
     align-items: flex-start;
-
     margin-top: 15px;
 }
 
 .skill {
     display: flex;
-
     flex-direction: column;
-
     align-items: center;
-
     gap: 6px;
-
     min-width: 58px;
 }
 
 .skill-icon {
     width: 58px;
     height: 58px;
-
     display: grid;
-
     place-items: center;
-
     border-radius: 11px;
-
     background: white;
-
     box-shadow:
         0 8px 18px rgba(0, 0, 0, 0.13);
-
     font-size: 23px;
-
     font-weight: 800;
-
     transition:
         transform 0.35s
         cubic-bezier(.2, .8, .2, 1);
@@ -924,15 +860,10 @@ button {
 
 .skill small {
     height: 12px;
-
     opacity: 0;
-
     color: var(--dark);
-
     font-size: 9px;
-
     white-space: nowrap;
-
     transition:
         opacity 0.3s ease;
 }
@@ -966,53 +897,36 @@ button {
 
 .canva {
     color: white;
-
     background:
         linear-gradient(
             135deg,
             #08d8a0,
             #7658e8
         );
-
     font-size: 11px;
 }
 
-
-/* =========================================================
-   JOURNEY
-========================================================= */
-
 .journey {
     display: flex;
-
     align-items: center;
-
     gap: 24px;
-
     margin-top: 10px;
 }
 
 .journey-image {
     position: relative;
-
     width: 330px;
     height: 175px;
-
     flex-shrink: 0;
-
     overflow: hidden;
-
     border-radius: 22px;
-
     background: var(--sage);
 }
 
 .journey-image img {
     width: 100%;
     height: 100%;
-
     object-fit: cover;
-
     transition:
         opacity 0.3s ease,
         transform 0.5s ease;
@@ -1031,21 +945,14 @@ button {
 
 .journey-next {
     position: absolute;
-
     right: 8px;
     bottom: 8px;
-
     width: 40px;
     height: 40px;
-
     border-radius: 50%;
-
     color: white;
-
     background: var(--sage);
-
     font-size: 21px;
-
     transition:
         transform 0.3s ease;
 }
@@ -1058,66 +965,45 @@ button {
 
 .journey-number {
     color: var(--rose);
-
     font-size: 9px;
-
     font-weight: 800;
-
     letter-spacing: 0.1em;
 }
 
 .journey-info h3 {
     margin: 7px 0;
-
     color: var(--rose);
-
     font-size: 22px;
 }
 
 .journey-info p {
     max-width: 390px;
-
     color: #5e6c39;
-
     font-size: 13px;
-
     line-height: 1.6;
 }
 
-
-/* =========================================================
-   WORKS
-========================================================= */
-
 .works {
     width: 100%;
-
     padding: 100px 5% 110px;
 }
 
 .works-inner {
     width: min(1400px, 100%);
-
     margin: 0 auto;
 }
 
 .works-heading {
     text-align: center;
-
     margin-bottom: 45px;
 }
 
 .works-heading h2 {
     margin-top: 8px;
-
     color: var(--pink);
-
     font-size: clamp(48px, 5vw, 75px);
-
     line-height: 0.95;
-
     font-weight: 800;
-
     letter-spacing: -0.05em;
 }
 
@@ -1127,146 +1013,97 @@ button {
 
 .works-heading p {
     width: min(600px, 100%);
-
     margin: 16px auto 0;
-
     color: rgba(255, 255, 255, 0.65);
-
     font-size: 14px;
-
     line-height: 1.6;
 }
-
-
 /* works layout */
-
 .works-content {
     width: min(1250px, 100%);
-
     margin: auto;
-
     display: grid;
-
     grid-template-columns:
         360px
         1fr;
-
     align-items: center;
-
     gap: 75px;
 }
-
-
 /* phone */
 
 .phone-area {
     position: relative;
-
     display: flex;
-
     justify-content: center;
-
     min-height: 570px;
-
     align-items: center;
 }
 
 .phone-shadow {
     position: absolute;
-
     width: 230px;
     height: 45px;
-
     bottom: 45px;
-
     border-radius: 50%;
-
     background: rgba(0, 0, 0, 0.25);
-
     filter: blur(18px);
-
     transform: rotate(-8deg);
 }
 
 .phone {
     position: relative;
-
     width: 305px;
     height: 610px;
-
     padding: 11px;
-
     border: 9px solid #111;
-
     border-radius: 45px;
-
     background: white;
-
     transform: rotate(-8deg);
-
     animation:
         phoneFloat
         4s ease-in-out
         infinite;
-
     box-shadow:
         18px 25px 40px
         rgba(0, 0, 0, 0.24);
-
     z-index: 2;
 }
 
 .phone-speaker {
     position: absolute;
-
     top: 10px;
     left: 50%;
-
     width: 32px;
     height: 4px;
-
     transform: translateX(-50%);
-
     border-radius: 20px;
-
     background: #333;
-
     z-index: 5;
 }
 
 .phone-notch {
     position: absolute;
-
     top: 6px;
     left: 50%;
-
     width: 105px;
     height: 24px;
-
     transform: translateX(-50%);
-
     border-radius: 20px;
-
     background: #111;
-
     z-index: 3;
 }
 
 .phone-screen {
     width: 100%;
     height: 100%;
-
     overflow: hidden;
-
     border-radius: 32px;
 }
 
 .phone-screen img {
     width: 100%;
     height: 100%;
-
     object-fit: cover;
-
     transition:
         opacity 0.25s ease;
 }
@@ -1286,7 +1123,6 @@ button {
     }
 }
 
-
 /* work preview */
 
 .work-preview {
@@ -1295,31 +1131,20 @@ button {
 
 .work-tabs {
     display: flex;
-
     justify-content: flex-start;
-
     flex-wrap: wrap;
-
     gap: 8px;
-
     margin-bottom: 18px;
 }
 
 .work-tab {
     padding: 10px 17px;
-
     border-radius: 20px;
-
     color: white;
-
     background: var(--rose);
-
     font-size: 9px;
-
     font-weight: 700;
-
     cursor: pointer;
-
     transition:
         0.3s ease;
 }
@@ -1330,32 +1155,24 @@ button {
 
 .work-tab.active {
     color: var(--dark);
-
     background: var(--sage);
-
     transform:
         translateY(-3px);
 }
 
 .work-image-wrap {
     position: relative;
-
     width: 100%;
     height: 410px;
-
     overflow: hidden;
-
     border-radius: var(--radius-medium);
-
     background: #f5ddd9;
 }
 
 .work-image-wrap img {
     width: 100%;
     height: 100%;
-
     object-fit: contain;
-
     transition:
         opacity 0.25s ease,
         transform 0.5s ease;
@@ -1363,24 +1180,15 @@ button {
 
 .work-arrow {
     position: absolute;
-
     top: 50%;
-
     z-index: 3;
-
     width: 48px;
     height: 48px;
-
     transform: translateY(-50%);
-
     border-radius: 50%;
-
     color: white;
-
     background: var(--sage);
-
     font-size: 30px;
-
     transition:
         transform 0.3s ease;
 }
@@ -1401,71 +1209,47 @@ button {
 
 .work-info {
     padding-top: 18px;
-
     color: white;
 }
 
 .work-number {
     color: var(--pink);
-
     font-size: 9px;
-
     font-weight: 800;
-
     letter-spacing: 0.12em;
 }
 
 .work-info h3 {
     margin: 5px 0 6px;
-
     color: var(--pink);
-
     font-size: 25px;
-
     line-height: 1;
 }
 
 .work-info p {
     max-width: 650px;
-
     color: rgba(255, 255, 255, 0.7);
-
     font-size: 13px;
-
     line-height: 1.6;
 }
 
-
-/* =========================================================
-   ACHIEVEMENTS
-   FULL WIDTH
-========================================================= */
-
 .achievements {
-    width: 100%;
-
+        width: 100%;
     margin: 0;
-
     padding: 90px 0 100px;
-
     overflow: hidden;
 }
 
 .achievement-title {
     width: min(1400px, 90%);
-
     margin: 0 auto 38px;
 }
 
 .achievement-title > span {
     color: white;
-
     font-size: clamp(50px, 6vw, 90px);
-
     line-height: 0.95;
-
     font-weight: 800;
-
     letter-spacing: -0.055em;
 }
 
