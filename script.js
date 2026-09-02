@@ -536,7 +536,6 @@ function setupJourney() {
 
 }
 
-
 /* =========================================================
    WORKS
 ========================================================= */
@@ -592,9 +591,10 @@ function setupWorks() {
     const works = [
 
         {
-            image:
-                "assets/work-poster.jpg",
+            phone:
+                "assets/poster1.jpg",
 
+       
             title:
                 "POSTER DESIGN",
 
@@ -603,8 +603,8 @@ function setupWorks() {
         },
 
         {
-            image:
-                "assets/work-website.jpg",
+            phone:
+                "assets/figma.jpg",
 
             title:
                 "WEB DESIGN",
@@ -614,9 +614,8 @@ function setupWorks() {
         },
 
         {
-            image:
-                "assets/work-ui.jpg",
-
+            phone:
+                "assets/web2.jpg",
             title:
                 "UI/UX DEVELOPMENT",
 
@@ -642,33 +641,21 @@ function setupWorks() {
         workImage.style.opacity =
             "0";
 
-        if (phoneImage) {
-
-            phoneImage.style.opacity =
-                "0";
-
-        }
+        phoneImage.style.opacity =
+            "0";
 
 
         setTimeout(() => {
 
-            workImage.src =
-                works[index].image;
-
-            if (phoneImage) {
-
-                phoneImage.src =
-                    works[index].image;
-
-            }
-
+           
+            phoneImage.src =
+                works[index].phone;
 
             workTitle.textContent =
                 works[index].title;
 
             workDescription.textContent =
                 works[index].description;
-
 
             workNumber.textContent =
                 `0${index + 1} / 0${works.length}`;
@@ -689,12 +676,8 @@ function setupWorks() {
             workImage.style.opacity =
                 "1";
 
-            if (phoneImage) {
-
-                phoneImage.style.opacity =
-                    "1";
-
-            }
+            phoneImage.style.opacity =
+                "1";
 
         }, 220);
 
@@ -743,7 +726,6 @@ function setupWorks() {
     );
 
 }
-
 
 /* =========================================================
    ACHIEVEMENTS
