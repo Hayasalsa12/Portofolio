@@ -736,5 +736,4 @@ function setupScrollAnimations() {
             );
         }
     );
-
 }
