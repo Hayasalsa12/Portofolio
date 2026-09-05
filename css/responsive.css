@@ -1,0 +1,537 @@
+
+/* =========================================================
+   RESPONSIVE CSS
+   TABLET + MOBILE
+========================================================= */
+
+
+/* =========================================================
+   TABLET
+   1100px
+========================================================= */
+
+@media (max-width: 1100px) {
+
+    /* ================= NAVBAR ================= */
+
+    .navbar {
+        width: calc(100% - 40px);
+        height: 78px;
+        padding: 0 25px;
+    }
+
+    .navbar nav {
+        gap: 20px;
+    }
+
+    .nav-link {
+        font-size: 10px;
+    }
+
+    .talk-btn {
+        display: none;
+    }
+
+
+    /* ================= HERO ================= */
+
+    .hero {
+        width: calc(100% - 35px);
+    }
+
+    .hero-card {
+        min-height: 680px;
+        padding: 70px 7%;
+    }
+
+    .id-card-wrap {
+        left: 5%;
+
+        width: 310px;
+        height: 435px;
+    }
+
+    .polaroid-photo {
+        height: 330px;
+    }
+
+    .hero-content {
+        width: 58%;
+    }
+
+    .hero-content h1 {
+        font-size: 55px;
+    }
+
+
+    /* ================= ABOUT ================= */
+
+    .about-card {
+        width: calc(100% - 50px);
+
+        padding:
+            55px 45px;
+    }
+
+    .about-photo {
+        width: 280px;
+        right: -10px;
+        top: -100px;
+    }
+
+    .about-text {
+        width: 73%;
+    }
+
+
+    /* ================= WORKS ================= */
+
+    .works-content {
+        grid-template-columns:
+            290px
+            1fr;
+
+        gap: 45px;
+    }
+
+    .phone {
+        width: 260px;
+        height: 530px;
+    }
+
+    .phone-area {
+        min-height: 520px;
+    }
+
+    .work-category {
+        min-height: 400px;
+    }
+
+    .category-image {
+        height: 165px;
+    }
+
+
+    /* ================= ACHIEVEMENT ================= */
+
+    .achievement-message {
+        padding:
+            45px 40px;
+    }
+
+    .achievement-message p {
+        font-size: 30px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   700px
+========================================================= */
+
+@media (max-width: 700px) {
+
+    /* ================= GLOBAL ================= */
+
+    body {
+        min-width: 0;
+    }
+
+
+    /* ================= NAVBAR ================= */
+
+    .navbar {
+        position: sticky;
+        top: 10px;
+
+        width: calc(100% - 20px);
+        height: 68px;
+
+        margin:
+            12px auto
+            25px;
+
+        padding: 0 18px;
+
+        border-radius: 40px;
+    }
+
+    .navbar nav {
+        gap: 10px;
+    }
+
+    .nav-link {
+        padding: 8px 0;
+
+        font-size: 8px;
+    }
+
+    .logo {
+        font-size: 23px;
+    }
+
+
+    /* ================= HERO ================= */
+
+    .hero {
+        width: calc(100% - 16px);
+    }
+
+    .hero-card {
+        min-height: auto;
+
+        padding:
+            45px 22px
+            55px;
+
+        display: block;
+
+        border-radius: 28px;
+    }
+
+    .id-card-wrap {
+        position: relative;
+
+        left: auto;
+        top: auto;
+
+        width: 235px;
+        height: 335px;
+
+        margin:
+            15px auto
+            45px;
+    }
+
+    .polaroid-photo {
+        height: 245px;
+    }
+
+    .polaroid-caption strong {
+        font-size: 19px;
+    }
+
+    .hero-content {
+        width: 100%;
+
+        text-align: center;
+    }
+
+    .hello {
+        font-size: 18px;
+    }
+
+    .hero-content h1 {
+        font-size: 39px;
+    }
+
+    .hero-description {
+        font-size: 13px;
+    }
+
+    .hero-meta {
+        justify-content: center;
+    }
+
+    .portfolio-btn {
+        font-size: 10px;
+    }
+
+
+    /* ================= MARQUEE ================= */
+
+    .marquee {
+        min-height: 55px;
+
+        margin-top: 18px;
+    }
+
+    .marquee-track span {
+        font-size: 17px;
+    }
+
+
+    /* ================= ABOUT ================= */
+
+    .about {
+        padding:
+            65px 0
+            75px;
+    }
+
+    .section-running-title {
+        margin-bottom: 40px;
+    }
+
+    .section-running-title span {
+        font-size: 65px;
+
+        -webkit-text-stroke-width: 1px;
+    }
+
+    .about-card {
+        width: calc(100% - 25px);
+
+        min-height: auto;
+
+        padding:
+            30px 22px
+            45px;
+
+        border-radius: 25px;
+    }
+
+    .about-photo {
+        position: relative;
+
+        top: auto;
+        right: auto;
+
+        width: 210px;
+
+        margin:
+            -85px auto
+            25px;
+    }
+
+    .about-text {
+        width: 100%;
+    }
+
+    .about-text h2 {
+        font-size: 37px;
+    }
+
+    .about-text > p {
+        font-size: 13px;
+    }
+
+
+    /* ================= SKILLS ================= */
+
+    .skills {
+        flex-wrap: wrap;
+
+        justify-content: center;
+
+        gap: 15px;
+    }
+
+
+    /* ================= JOURNEY ================= */
+
+    .journey {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+    .journey-image {
+        width: 100%;
+        height: 190px;
+    }
+
+    .journey-info p {
+        max-width: none;
+    }
+
+
+    /* ================= WORKS ================= */
+
+    .works {
+        padding:
+            65px 20px
+            75px;
+    }
+
+    .works-heading h2 {
+        font-size: 48px;
+    }
+
+    .works-content {
+        grid-template-columns: 1fr;
+
+        gap: 45px;
+    }
+
+    .phone-area {
+        min-height: 470px;
+    }
+
+    .phone {
+        width: 230px;
+        height: 460px;
+    }
+
+    .work-categories {
+        grid-template-columns: 1fr;
+
+        gap: 18px;
+    }
+
+    .work-category {
+        min-height: 380px;
+    }
+
+    .category-image {
+        height: 180px;
+    }
+
+
+    /* ================= ACHIEVEMENTS ================= */
+
+    .achievements {
+        padding:
+            65px 0
+            70px;
+    }
+
+    .achievement-title {
+        width: calc(100% - 35px);
+
+        margin-bottom: 30px;
+    }
+
+    .achievement-title > span {
+        font-size: 48px;
+    }
+
+    .achievement-content {
+        grid-template-columns: 1fr;
+    }
+
+    .achievement-image {
+        height: 350px;
+
+        border-radius: 0;
+    }
+
+    .achievement-overlay {
+        left: 20px;
+        bottom: 20px;
+
+        width: calc(100% - 40px);
+
+        padding: 18px;
+    }
+
+    .achievement-message {
+        min-height: 310px;
+
+        padding:
+            40px 25px;
+    }
+
+    .achievement-message p {
+        font-size: 27px;
+    }
+
+    .achievement-cta {
+        padding:
+            20px 22px;
+    }
+
+    .achievement-cta strong {
+        font-size: 17px;
+    }
+
+
+    /* ================= CONTACT ================= */
+
+    .contact {
+        padding:
+            65px 15px
+            60px;
+    }
+
+    .contact-card {
+        width: 100%;
+
+        padding:
+            45px 20px;
+
+        border-radius: 28px;
+    }
+
+    .contact-card h2 {
+        font-size: 52px;
+    }
+
+    .socials {
+        grid-template-columns: 1fr;
+    }
+
+
+    /* ================= FOOTER ================= */
+
+    footer {
+        width: calc(100% - 35px);
+    }
+
+    .footer-top,
+    .footer-bottom {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+    .footer-top {
+        gap: 25px;
+    }
+
+    .footer-nav {
+        gap: 14px;
+    }
+}
+
+
+/* =========================================================
+   SMALL PHONE
+   430px
+========================================================= */
+
+@media (max-width: 430px) {
+
+    .navbar {
+        padding: 0 14px;
+    }
+
+    .navbar nav {
+        gap: 7px;
+    }
+
+    .nav-link {
+        font-size: 7px;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    .hero-content h1 {
+        font-size: 34px;
+    }
+
+    .id-card-wrap {
+        width: 215px;
+        height: 310px;
+    }
+
+    .polaroid-photo {
+        height: 220px;
+    }
+
+    .works-heading h2 {
+        font-size: 42px;
+    }
+
+    .achievement-title > span {
+        font-size: 42px;
+    }
+
+    .contact-card h2 {
+        font-size: 45px;
+    }
+}
+
