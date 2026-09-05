@@ -599,3 +599,45 @@ function setupScrollAnimations() {
         }
     );
 }
+
+const skipIntro =
+    window.location.hash === "#works";
+
+if (skipIntro) {
+
+    document.body.classList.add("skip-intro");
+
+    const intro = document.querySelector("#intro");
+    const statement = document.querySelector("#statement-screen");
+    const website = document.querySelector("#website");
+
+    if (intro) {
+        intro.style.display = "none";
+    }
+
+    if (statement) {
+        statement.style.display = "none";
+    }
+
+    if (website) {
+        website.style.opacity = "1";
+        website.style.visibility = "visible";
+    }
+
+    window.addEventListener("load", () => {
+
+        setTimeout(() => {
+
+            const works =
+                document.querySelector("#works");
+
+            if (works) {
+                works.scrollIntoView({
+                    behavior: "smooth"
+                });
+            }
+
+        }, 100);
+
+    });
+}
