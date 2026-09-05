@@ -1,20 +1,99 @@
 /* =========================================================
    DETAIL RESPONSIVE
+   VERSION FIX - LEBIH LEBAR & RESPONSIVE
 ========================================================= */
 
 
 /* =========================================================
+   GLOBAL DETAIL
+========================================================= */
+
+.detail-page {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.detail-page *,
+.detail-page *::before,
+.detail-page *::after {
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   DESKTOP
+   > 1100px
+========================================================= */
+
+.detail-nav {
+    width: 90%;
+    max-width: 1450px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.detail-hero {
+    width: 90%;
+    max-width: 1450px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.detail-article {
+    width: 90%;
+    max-width: 1450px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.detail-project {
+    width: 90%;
+    max-width: 1450px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.detail-closing {
+    width: 90%;
+    max-width: 1450px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.detail-footer {
+    width: 90%;
+    max-width: 1450px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* =========================================================
    TABLET
+   701px - 1100px
 ========================================================= */
 
 @media (max-width: 1100px) {
 
+    /* NAV */
+
     .detail-nav {
         width: calc(100% - 40px);
+        max-width: none;
     }
+
+
+    /* HERO */
 
     .detail-hero {
         width: calc(100% - 40px);
+        max-width: none;
 
         min-height: 570px;
 
@@ -32,8 +111,11 @@
     }
 
 
+    /* ARTICLE */
+
     .detail-article {
-        width: calc(100% - 60px);
+        width: calc(100% - 40px);
+        max-width: none;
 
         padding: 60px;
 
@@ -41,29 +123,47 @@
     }
 
 
+    /* PROJECT */
+
     .detail-project {
-        width: calc(100% - 60px);
+        width: calc(100% - 40px);
+        max-width: none;
     }
 
 
+    /* CLOSING */
+
+    .detail-closing {
+        width: calc(100% - 40px);
+        max-width: none;
+    }
+
+
+    /* FOOTER */
+
     .detail-footer {
-        width: calc(100% - 50px);
+        width: calc(100% - 40px);
+        max-width: none;
     }
 }
 
 
 /* =========================================================
    MOBILE
+   <= 700px
 ========================================================= */
 
 @media (max-width: 700px) {
 
     .detail-page {
+        width: 100%;
         overflow-x: hidden;
     }
 
 
-    /* NAV */
+    /* =====================================================
+       NAV
+    ===================================================== */
 
     .detail-nav {
         width: calc(100% - 20px);
@@ -88,7 +188,9 @@
     }
 
 
-    /* HERO */
+    /* =====================================================
+       HERO
+    ===================================================== */
 
     .detail-hero {
         width: calc(100% - 16px);
@@ -112,6 +214,7 @@
         border-radius: 28px;
     }
 
+
     .detail-hero::before {
         width: 250px;
         height: 250px;
@@ -119,6 +222,7 @@
         right: -100px;
         top: -100px;
     }
+
 
     .detail-hero::after {
         left: 25px;
@@ -130,9 +234,11 @@
         width: 100%;
     }
 
+
     .detail-label {
         font-size: 8px;
     }
+
 
     .detail-hero h1 {
         font-size: 48px;
@@ -140,11 +246,13 @@
         line-height: 0.92;
     }
 
+
     .detail-hero-description {
         font-size: 12px;
 
         line-height: 1.75;
     }
+
 
     .detail-button {
         font-size: 9px;
@@ -154,26 +262,37 @@
     }
 
 
+    /* HERO IMAGE */
+
     .detail-hero-image {
         width: 90%;
+        max-width: 500px;
+
+        margin-left: auto;
+        margin-right: auto;
     }
+
 
     .detail-hero-image::before {
         width: 220px;
         height: 220px;
     }
 
+
     .detail-hero-image img {
+        width: 100%;
         max-height: 330px;
 
         border-radius: 22px;
     }
 
 
-    /* ARTICLE */
+    /* =====================================================
+       ARTICLE
+    ===================================================== */
 
     .detail-article {
-        width: calc(100% - 25px);
+        width: calc(100% - 20px);
 
         margin-top: 50px;
 
@@ -190,11 +309,13 @@
         border-radius: 27px;
     }
 
+
     .detail-article-info {
         position: static;
 
         text-align: center;
     }
+
 
     .detail-article h2,
     .detail-project h2,
@@ -203,6 +324,7 @@
 
         line-height: 0.94;
     }
+
 
     .detail-article p,
     .detail-project p,
@@ -213,27 +335,44 @@
     }
 
 
-    /* INFO */
+    /* =====================================================
+       INFO
+    ===================================================== */
 
     .detail-info-list {
         text-align: left;
     }
 
 
-    /* PROJECT */
+    /* =====================================================
+       PROJECT
+    ===================================================== */
 
     .detail-project {
-        width: calc(100% - 30px);
+        width: calc(100% - 20px);
 
         padding:
             70px 0;
     }
 
+
     .detail-project-image {
+        width: 100%;
+
         margin-top: 35px;
 
         border-radius: 20px;
+
+        overflow: hidden;
     }
+
+
+    .detail-project-image img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
 
     .detail-project-grid {
         grid-template-columns: 1fr;
@@ -241,16 +380,24 @@
         gap: 14px;
     }
 
+
     .detail-project-grid img {
+        width: 100%;
+
         border-radius: 18px;
     }
 
 
-    /* TOOLS */
+    /* =====================================================
+       TOOLS
+    ===================================================== */
 
     .detail-tools {
         gap: 6px;
+
+        flex-wrap: wrap;
     }
+
 
     .detail-tool {
         padding:
@@ -260,10 +407,12 @@
     }
 
 
-    /* CLOSING */
+    /* =====================================================
+       CLOSING
+    ===================================================== */
 
     .detail-closing {
-        width: calc(100% - 30px);
+        width: calc(100% - 20px);
 
         padding:
             60px 0
@@ -271,16 +420,20 @@
     }
 
 
-    /* NEXT */
+    /* =====================================================
+       NEXT
+    ===================================================== */
 
     .detail-next {
         padding:
             30px 22px;
     }
 
+
     .detail-next strong {
         font-size: 17px;
     }
+
 
     .detail-next a {
         width: 45px;
@@ -288,10 +441,12 @@
     }
 
 
-    /* FOOTER */
+    /* =====================================================
+       FOOTER
+    ===================================================== */
 
     .detail-footer {
-        width: calc(100% - 35px);
+        width: calc(100% - 20px);
 
         padding:
             28px 0
@@ -308,39 +463,59 @@
 
 /* =========================================================
    SMALL PHONE
+   <= 420px
 ========================================================= */
 
 @media (max-width: 420px) {
+
+    /* NAV */
 
     .detail-nav-links {
         gap: 9px;
     }
 
+
     .detail-nav-links a {
         font-size: 7px;
     }
+
 
     .detail-logo {
         font-size: 19px;
     }
 
 
+    /* HERO */
+
     .detail-hero {
+        width: calc(100% - 14px);
+
         padding:
             42px 20px
             45px;
     }
 
+
     .detail-hero h1 {
         font-size: 41px;
     }
+
 
     .detail-hero-description {
         font-size: 11px;
     }
 
 
+    .detail-hero-image {
+        width: 94%;
+    }
+
+
+    /* ARTICLE */
+
     .detail-article {
+        width: calc(100% - 14px);
+
         padding:
             35px 20px
             40px;
@@ -351,5 +526,26 @@
     .detail-project h2,
     .detail-closing h2 {
         font-size: 36px;
+    }
+
+
+    /* PROJECT */
+
+    .detail-project {
+        width: calc(100% - 14px);
+    }
+
+
+    /* CLOSING */
+
+    .detail-closing {
+        width: calc(100% - 14px);
+    }
+
+
+    /* FOOTER */
+
+    .detail-footer {
+        width: calc(100% - 14px);
     }
 }
